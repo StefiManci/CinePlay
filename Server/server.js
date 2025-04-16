@@ -51,9 +51,6 @@ app.get("/comments", (req, res) => {
   });
 });
 
-
-
-
 app.post("/watched",(req,res)=>{
     const {name,movie,date}=req.body;
 
@@ -67,7 +64,21 @@ app.post("/watched",(req,res)=>{
         res.json({ message: 'Form submitted successfully!' });
     });
 })
+app.get("/watched",(req,res)=>{
 
+  const query='SELECT * FROM watched';
+
+  db.query(query,(err,results)=>{
+    if(err){
+      console.error('Error fetching watched movies:',err);
+      return res.status(500).json({message: "Error fetching watched movies"});
+    }
+
+    res.json(results);
+  })
+
+
+})
 app.post("/bought",(req,res)=>{
   const {name,movie,date,method}=req.body;
   const query='INSERT INTO bought(user_sub,movie_title,purchase_date,payment_method) VALUES(?,?,?,?)'
@@ -81,6 +92,21 @@ app.post("/bought",(req,res)=>{
   res.json({ message: 'Form submitted successfully!' });
   });
 });
+app.get("/bought",(req,res)=>{
+
+  const query='SELECT * FROM bought';
+
+  db.query(query,(err,results)=>{
+    if(err){
+      console.error('Error fetching bought movies:',err);
+      return res.status(500).json({message: "Error fetching watched movies"});
+    }
+
+    res.json(results);
+  })
+
+
+})
 
 app.post("/favourites",(req,res)=>{
   const {name,movie,date}=req.body;
@@ -96,6 +122,21 @@ app.post("/favourites",(req,res)=>{
   res.json({ message: 'Form submitted successfully!' });
   });
 });
+app.get("/favourites",(req,res)=>{
+
+  const query='SELECT * FROM favourites';
+
+  db.query(query,(err,results)=>{
+    if(err){
+      console.error('Error fetching favourite movies:',err);
+      return res.status(500).json({message: "Error fetching watched movies"});
+    }
+
+    res.json(results);
+  })
+
+
+})
 
 app.post("/rented",(req,res)=>{
   const {name,movie,date,method,days}=req.body;
@@ -111,6 +152,21 @@ app.post("/rented",(req,res)=>{
   res.json({ message: 'Form submitted successfully!' });
   });
 });
+app.get("/rented",(req,res)=>{
+
+  const query='SELECT * FROM rented';
+
+  db.query(query,(err,results)=>{
+    if(err){
+      console.error('Error fetching rented movies:',err);
+      return res.status(500).json({message: "Error fetching watched movies"});
+    }
+
+    res.json(results);
+  })
+
+
+})
 //SERVER INITIATION
 app.listen(3000,()=>{
     console.log("Server up and Running!");
