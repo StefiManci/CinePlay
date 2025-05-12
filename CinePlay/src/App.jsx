@@ -1,5 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { lazy, Suspense } from "react";
+import Protected from "./Components/Protected";
+import Admin from "./Components/Admin";
 
 // Loading Components with Lazy Load to improve performance
 const Navigation = lazy(() => import("./Components/Navigation"));
@@ -67,6 +69,12 @@ const router = createBrowserRouter([
           </Suspense>
         ),
       },
+      {
+        path:"/Admin",
+        element:(
+          <Protected element={<Admin></Admin>}></Protected>
+        )
+      }
     ],
   },
 ]);

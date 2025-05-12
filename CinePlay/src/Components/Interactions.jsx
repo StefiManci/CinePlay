@@ -103,6 +103,8 @@ export default function Interactions({ title, id }) {
         setSeeComment(!seecomment);
     }
 
+    
+
     useEffect(() => {
         const fetchComments = async () => {
             try {
@@ -150,6 +152,7 @@ export default function Interactions({ title, id }) {
                 <div className="w-full max-w-2xl flex flex-wrap gap-4 justify-center">
                     <Link
                         to={`https://vidsrc.icu/embed/movie/${id}`}
+                        target="_blank"
                         onClick={handleWatch}
                         className="px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition text-center"
                     >
