@@ -1,3 +1,4 @@
+/*This is the admin code*/ 
 import React from "react";
 
 const Admin = () => {
