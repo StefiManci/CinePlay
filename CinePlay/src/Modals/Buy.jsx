@@ -12,7 +12,7 @@ export default function Buy({ open, funct ,user , movie }) {
         method:"paypal"
     });
 
-     // Update payment method
+     // Update payment 
      const handleMethodChange = (e) => {
         setData({
             ...data,
